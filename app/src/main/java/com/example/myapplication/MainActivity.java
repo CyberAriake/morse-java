@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.media.AudioAttributes;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
     private SoundPool soundPool;
+    private MediaPlayer mediaPlayer;
     private int soundYa;
     int streamId=0;
 
@@ -34,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
                 .setAudioAttributes(audioAttributes)
                 .setMaxStreams(2)
                 .build();
+
+        mediaPlayer = MediaPlayer.create(this,R.raw.radio1);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.setVolume(0.1f,0.1f);
+        mediaPlayer.start();
 
         soundYa = soundPool.load(this, R.raw.ya,1);
 
